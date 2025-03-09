@@ -5,9 +5,9 @@ function Footer() {
     <footer className='footer pad-y'>
     <div className="container">
       <div className="row justify-content-center">
-        <div className="col-lg-6 col-md-6 col-12">
+        <div className="col-lg-6  col-12 mb-4">
           <div className="row align-items-center">
-            <div className="col-lg-12">
+            <div className="col-12">
               <div className="logo-area ">
                 <div>
                 <img src={logo} className="img-fluid mb-3" alt="Logo" />
@@ -25,7 +25,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className="col-lg-6 col-md-6 col-12">
+        <div className="col-lg-6  col-12">
           <div className="row align-items-center">
             <div className="col-lg-4 col-md-4 col-12">
                 <h4 className="footer-hd">Home</h4>

@@ -1,17 +1,28 @@
 import img from "../assets/images/Arrow-1.svg";
 import card1Img1 from "../assets/images/Filled.png";
-import card1Img2 from "../assets/images/img-card-1-img-1.png";
+import card1Img2 from "../assets/images/card-img-1.png";
+
+// import card1Img2 from "../assets/images/img-card-1-img-1.png";
 import card1Img3 from "../assets/images/card1Img2.png";
 import card2Img1 from "../assets/images/customer.png";
 import card3Img1 from "../assets/images/cloud-img.png";
 import card4Img1 from "../assets/images/last-card-img.png";
-import circle from "../assets/images/circle-ellipse.png"
+import biggerCircle from "../assets/images/bigger-ellipse.png";
+import dots from "../assets/images/texture.png";
+import circle from "../assets/images/half-blurred.png";
+import circle2 from "../assets/images/top-blured.png";
+import card1Abs1Img from "../assets/images/side-blur.png";
+import card1Abs2Img from "../assets/images/side-blur-1.png";
+import card1Abs3Img from "../assets/images/circle-ellipse.png";
+import card3Abs1Img from "../assets/images/card-3-blur-1.png";
+import card3Abs2Img from "../assets/images/card-3-blur-2.png";
+
 const FeatureBenefits = () => {
   const features = [
     {
       cardTitle: "Easy-to-Use Interface",
       cardDesc: `Users can quickly start using the platform without ${"\n"} needing a steep learning curve.`,
-      cardSideImg: [card1Img2, card1Img3],
+      cardSideImg: [card1Img2],
     },
     {
       cardTitle: "Collaboration Tools",
@@ -33,8 +44,9 @@ const FeatureBenefits = () => {
     },
   ];
   return (
-    <section>
-      <div className="container">
+    <section className="feature-sec">
+      <img src={biggerCircle} className="big-ellipse" alt="" />
+      <div className="container padding-container">
         <div className="row">
           <div className="col-12 mb-5">
             <div className="why-choose-header text-center">
@@ -49,11 +61,55 @@ const FeatureBenefits = () => {
           </div>
           {features.map((elem, i) => (
             <div
+              key={i}
               className={`mb-4 col-md-6 ${
                 (i === 0 && "col-lg-7") || (i === 1 && "col-lg-5") || "col-lg-6"
               }`}
             >
               <div className={`features-card ${i == 1 ? "half-blur" : ""}`}>
+                {/* Absolute Images */}
+                {i === 0 && (
+                  <>
+                    <img
+                      src={card1Abs1Img}
+                      className="card-One-abs-1 abs-imgs"
+                      alt=""
+                    />
+                    <img
+                      src={card1Abs2Img}
+                      className="card-One-abs-2 abs-imgs"
+                      alt=""
+                    />
+                    <img
+                      src={card1Abs3Img}
+                      className="card-One-abs-3 abs-imgs"
+                      alt=""
+                    />
+                  </>
+                )}
+                {i == 1 && (
+                  <>
+                    <img src={dots} alt="" className="dot-img" />
+                    <img src={circle} className="big-ellipse-2 position-ell-1" alt="" />
+                    <img src={circle2} className="big-ellipse-2 position-ell-2" alt="" />
+                  </>
+                )}
+                {(i == 2 || i == 3) && (
+                  <>
+                    <img
+                      src={card3Abs1Img}
+                      className="card-Two-abs-1 abs-imgs"
+                      alt=""
+                    />
+                    <img
+                      src={card3Abs2Img}
+                      className="card-Two-abs-2 abs-imgs"
+                      alt=""
+                    />
+                  </>
+                )}
+                {/* Absolute Images End */}
+
                 <div className="row">
                   {i > 1 && (
                     <div
@@ -73,7 +129,11 @@ const FeatureBenefits = () => {
                       </div>
                     </div>
                   )}
-                  <div className={`${i != 0 ? "col-xl-7 col-12": "col-lg-7"} mb-3`}>
+                  <div
+                    className={`${
+                      i != 0 ? "col-xl-9 col-12" : "col-lg-7"
+                    } mb-3 column-text`}
+                  >
                     <h2 className="card-title mb-3">{elem.cardTitle}</h2>
                     <p className="card-desc">{elem.cardDesc}</p>
                     <a href="" className="anchor-text">
@@ -96,12 +156,7 @@ const FeatureBenefits = () => {
                     >
                       <img
                         src={elem.cardSideImg[0]}
-                        className={`${i == 0 ? "img-group-1":"w-100"}`}
-                        alt=""
-                      />
-                      <img
-                        src={elem.cardSideImg[1]}
-                        className={`${i == 0 ? "img-group":""}`}
+                        className={`${i == 0 ? "img-group-1" : "w-100 animate-img"}`}
                         alt=""
                       />
                     </div>

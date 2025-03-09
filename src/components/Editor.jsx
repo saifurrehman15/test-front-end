@@ -8,8 +8,22 @@ import DesignPanel from "./design-panel";
 import img1 from "../assets/images/rectangle.png";
 import img2 from "../assets/images/type-01.png";
 import img3 from "../assets/images/image-03.png";
-
+import selectImg from "../assets/images/scene-img.png";
+import { PanelTopCloseIcon, X } from "lucide-react";
 const options = [
+  {
+    value: "scene",
+    label: (
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <img
+          src={selectImg}
+          alt="Scene"
+          style={{ width: 20, height: 20, marginRight: 10 }}
+        />
+        Scene
+      </div>
+    ),
+  },
   { value: "screen1", label: "Screen 1" },
   { value: "screen2", label: "Screen 2" },
   { value: "screen3", label: "Screen 3" },
@@ -18,68 +32,19 @@ const Editor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [size, setSize] = useState({ width: "100%", height: 350 });
   const [opacity, setOpacity] = useState(1);
-  const [color, setColor] = useState("#0086FF");
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [activeBtn, setActive] = useState("Layer");
-  const [activeBtn2, setActive2] = useState("Design");
-
+  const [editorOpen, setEditorOpen] = useState(false);
   return (
     <section className="editor-section pad-y">
       <div className="container position-relative ">
         <img src={bg2} className="img-fluid bg-img bg-img-2" alt="" />
         <div className="row">
           <div className="col-lg-3 hide-column col-12">
-            <aside className="sidebar">
-              <div className="d-flex gap-3 mb-3">
-                <button
-                  className={`tab-btn ${activeBtn == "Layer" && "active-tab"}`}
-                  onClick={() => setActive("Layer")}
-                >
-                  Layer
-                </button>
-                <button
-                  className={`tab-btn ${activeBtn == "Item" && "active-tab"}`}
-                  onClick={() => setActive("Item")}
-                >
-                  Item
-                </button>
-              </div>
-              <Select
-                defaultValue={selectedOption}
-                onChange={setSelectedOption}
-                options={options}
-                className="screen-select"
-              />
-              <hr
-                style={{
-                  backgroundColor: "#fff",
-                  height: "2px",
-                }}
-              />
-              <ul className="item-list">
-                <li className="active">
-                  <span className="icon-box">
-                    <img src={img1} className="img-fluid" alt="" />
-                  </span>
-                  Rectangle
-                </li>
-                <li>
-                  <span className="icon-box">
-                    <img src={img2} className="img-fluid" alt="" />
-                  </span>
-                  User Interface
-                </li>
-                <li>
-                  
-                  <span className="icon-box">
-                    <img src={img3} className="img-fluid" alt="" />
-                  </span>
-                  Image
-                </li>
-              </ul>
-            </aside>
+            <SideBar2 />
           </div>
           <div className="col-lg-6 col-12">
+            <button className="tool-btn" onClick={() => setEditorOpen(true)}>
+              <PanelTopCloseIcon />
+            </button>
             <div className="main-canvas">
               <motion.div
                 className="animated-object"
@@ -152,77 +117,25 @@ const Editor = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-3 col-md-3 col-12">
+          <div className="col-lg-3 hide-column col-12">
             <DesignPanel />
-            {/* <aside className="sidebar">
-              <div className="align-area">
-                <div className="area-box-1">
-                  <button></button>
-                  <button></button>
-                  <button></button>
-                </div>
-              </div>
-              <div className="layout-controls">
-                <div className="control-row">
-                  <label>X</label>
-                  <input
-                    type="number"
-                    value={position.x}
-                    onChange={(e) =>
-                      setPosition({ ...position, x: Number(e.target.value) })
-                    }
-                  />
-                  <label>Y</label>
-                  <input
-                    type="number"
-                    value={position.y}
-                    onChange={(e) =>
-                      setPosition({ ...position, y: Number(e.target.value) })
-                    }
-                  />
-                </div>
+          </div>
+        </div>
+      </div>
 
-                <div className="control-row">
-                  <label>Width</label>
-                  <input
-                    type="number"
-                    value={size.width}
-                    onChange={(e) =>
-                      setSize({ ...size, width: Number(e.target.value) })
-                    }
-                  />
-                  <label>Height</label>
-                  <input
-                    type="number"
-                    value={size.height}
-                    onChange={(e) =>
-                      setSize({ ...size, height: Number(e.target.value) })
-                    }
-                  />
-                </div>
-
-                <div className="control-row">
-                  <label>Opacity</label>
-                  <input
-                    type="range"
-                    min="0"
-                    max="1"
-                    step="0.01"
-                    value={opacity}
-                    onChange={(e) => setOpacity(Number(e.target.value))}
-                  />
-                </div>
-
-                <div className="color-picker">
-                  <label>Fill</label>
-                  <input
-                    type="color"
-                    value={color}
-                    onChange={(e) => setColor(e.target.value)}
-                  />
-                </div>
-              </div>
-            </aside> */}
+      <div className={`side-bar-3 ${editorOpen ? "acitve-side" : ""}`}>
+        <div className="row">
+          <div className="col-12">
+            <div className="d-flex justify-content-end">
+              <button
+                className="close-btns"
+                onClick={() => setEditorOpen(false)}
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <SideBar2 />
+            <DesignPanel />
           </div>
         </div>
       </div>
@@ -231,3 +144,62 @@ const Editor = () => {
 };
 
 export default Editor;
+
+const SideBar2 = () => {
+  const [color, setColor] = useState("#0086FF");
+  const [activeBtn, setActive] = useState("Layer");
+  const [selectedOption, setSelectedOption] = useState(options[0]);
+  const [activeBtn2, setActive2] = useState("Design");
+
+  return (
+    <aside className="sidebar">
+      <div className="d-flex gap-3 mb-3">
+        <button
+          className={`tab-btn ${activeBtn == "Layer" && "active-tab"}`}
+          onClick={() => setActive("Layer")}
+        >
+          Layer
+        </button>
+        <button
+          className={`tab-btn ${activeBtn == "Item" && "active-tab"}`}
+          onClick={() => setActive("Item")}
+        >
+          Item
+        </button>
+      </div>
+
+      <Select
+        defaultValue={selectedOption}
+        onChange={setSelectedOption}
+        options={options}
+        className="screen-select"
+      />
+      <hr
+        style={{
+          backgroundColor: "#fff",
+          height: "2px",
+        }}
+      />
+      <ul className="item-list">
+        <li className="active">
+          <span className="icon-box">
+            <img src={img1} className="img-fluid" alt="" />
+          </span>
+          Rectangle
+        </li>
+        <li>
+          <span className="icon-box">
+            <img src={img2} className="img-fluid" alt="" />
+          </span>
+          User Interface
+        </li>
+        <li>
+          <span className="icon-box">
+            <img src={img3} className="img-fluid" alt="" />
+          </span>
+          Image
+        </li>
+      </ul>
+    </aside>
+  );
+};

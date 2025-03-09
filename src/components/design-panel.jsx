@@ -109,7 +109,7 @@ console.log(squareProps);
       <div className="section">
         <h3>Layout</h3>
         <div className="row">
-          <div className="col-xxl-6 col-12">
+          <div className="col-xl-6 col-12">
             <div className="input-group">
               <div className="input-item">
                 <label>X</label>
@@ -131,7 +131,7 @@ console.log(squareProps);
               </div>
             </div>
           </div>
-          <div className="col-xxl-6 col-12">
+          <div className="col-xl-6 col-12">
             <div className="input-group">
               <div className="input-item">
                 <label>Width</label>
@@ -153,7 +153,7 @@ console.log(squareProps);
               </div>
             </div>
           </div>
-          <div className="col-xxl-6 col-12">
+          <div className="col-xl-6 col-12">
             <div className="input-group">
               <div className="input-item">
                 <label>Angle</label>
@@ -166,7 +166,7 @@ console.log(squareProps);
               </div>
             </div>
           </div>
-          <div className="col-xxl-6 col-12">
+          <div className="col-xl-6 col-12">
             <div className="input-group">
               <div className="input-item">
                 <label>Radius</label>
@@ -185,10 +185,10 @@ console.log(squareProps);
 
       {/* Opacity Section */}
       <div className="section row align-items-center">
-        <div className="col-lg-6">
+        <div className="col-lg-6 col-6">
           <h3>Opacity</h3>
         </div>
-        <div className="col-lg-6 d-flex justify-content-end">
+        <div className="col-lg-6 col-6 d-flex justify-content-end">
           <div className="input-group">
             <input
               type="number"
