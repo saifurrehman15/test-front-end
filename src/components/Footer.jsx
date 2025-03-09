@@ -1,4 +1,4 @@
-import logo from '../assets/images/logo.png';
+import logo from '../assets/images/logo-2.png';
 
 function Footer() {
   return (
@@ -9,14 +9,16 @@ function Footer() {
           <div className="row align-items-center">
             <div className="col-lg-12">
               <div className="logo-area ">
+                <div>
                 <img src={logo} className="img-fluid mb-3" alt="Logo" />
-                <p className='para mb-3 text-white footer-list'>
+                </div>
+                <p className='para  text-white footer-list-para'>
                     1234 Innovation Blvd, Suit 567 <br/> Tech City TC 92838 United States
                 </p>
-                <p className='para mb-3 text-white'>
+                <p className='para footer-list-para  text-white'>
                     (555) 123 4567
                 </p>
-                <p className='para text-white'>
+                <p className='para footer-list-para text-white mb-3'>
                     contact@animify.com
                 </p>
               </div>

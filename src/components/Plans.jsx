@@ -1,4 +1,5 @@
 import React from "react";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import plan1 from "../assets/images/plan1.png";
 import plan2 from "../assets/images/plan2.png";
 import icon1 from "../assets/images/plan-icon-1.png";
@@ -11,13 +12,7 @@ const plans = [
         monthly: "monthly",
         bg: plan1,
         description: "Perfect for custom animation and motion graphics.",
-        features: [
-            { icon: icon2, text: "Unlimited files" },
-            { icon: icon2, text: "Unlimited editors" },
-            { icon: icon2, text: "Export video, GIF, Lottie" },
-            { icon: icon2, text: "720p, 30fps" },
-            { icon: icon2, text: "Import from Figma" },
-        ],
+        features: ["Unlimited files", "Unlimited editors", "Export video, GIF, Lottie", "720p, 30fps", "Import from Figma"],
         buttonText: "Sign Up with Starter",
     },
     {
@@ -26,13 +21,7 @@ const plans = [
         monthly: "monthly",
         bg: plan2,
         description: "Perfect for custom animation and motion graphics.",
-        features: [
-            { icon: icon1, text: "Unlimited files" },
-            { icon: icon1, text: "Unlimited editors" },
-            { icon: icon1, text: "Export video, GIF, Lottie" },
-            { icon: icon1, text: "720p, 30fps" },
-            { icon: icon1, text: "Import from Figma" },
-        ],
+        features: ["Unlimited files", "Unlimited editors", "Export video, GIF, Lottie", "1080p, 60fps", "Priority support"],
         buttonText: "Sign Up with Professional",
         popular: true,
     },
@@ -41,19 +30,53 @@ const plans = [
         price: "Custom",
         monthly: "",
         bg: plan1,
-        description: "Perfect for custom animation and motion graphics.",
-        features: [
-            { icon: icon2, text: "Unlimited files" },
-            { icon: icon2, text: "Unlimited editors" },
-            { icon: icon2, text: "Export video, GIF, Lottie" },
-            { icon: icon2, text: "720p, 30fps" },
-            { icon: icon2, text: "Import from Figma" },
-          
-        ],
-        buttonText: "Sign Up with Enterprise",
+        description: "Perfect for businesses with advanced needs.",
+        features: ["Custom solutions", "Dedicated support", "Unlimited storage", "API access", "Team management"],
+        buttonText: "Contact Us",
     },
-    
 ];
+
+const TiltCard = ({ plan }) => {
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+    const rotateX = useTransform(y, [-100, 100], [10, -10]);
+    const rotateY = useTransform(x, [-100, 100], [-10, 10]);
+
+    return (
+        <motion.div
+            className={`plan-card ${plan.popular ? "popular" : ""}`}
+            whileHover={{ scale: 1.05 }}
+            style={{ rotateX, rotateY, backgroundImage: `url(${plan.bg})` }}
+            onMouseMove={(event) => {
+                const rect = event.currentTarget.getBoundingClientRect();
+                x.set(event.clientX - rect.left - rect.width / 2);
+                y.set(event.clientY - rect.top - rect.height / 2);
+            }}
+            onMouseLeave={() => {
+                x.set(0);
+                y.set(0);
+            }}
+        >
+            <div className="plan-header">
+                <h3>{plan.name}</h3>
+                {plan.popular && <span className="badge-plan">Popular</span>}
+            </div>
+            <div className="plan-price">
+                <h2>{plan.price}<span>/{plan.monthly}</span></h2>
+            </div>
+            <p className="plan-description">{plan.description}</p>
+            <button className="plan-button">{plan.buttonText}</button>
+            <ul className="plan-features">
+                {plan.features.map((feature, i) => (
+                    <li key={i} className="feature-item">
+                        <img src={plan.popular ? icon1 : icon2} alt="icon" className="feature-icon" />
+                        <span>{feature}</span>
+                    </li>
+                ))}
+            </ul>
+        </motion.div>
+    );
+};
 
 const Plans = () => {
     return (
@@ -64,38 +87,8 @@ const Plans = () => {
             <div className="container">
                 <div className="row mt-5">
                     {plans.map((plan, index) => (
-                        <div className="col-lg-4 col-md-4 col-12"
-                            key={index}
-                        >
-                            <div
-                                className={` plan-card ${plan.popular ? "popular" : ""}`}
-                                style={{ backgroundImage: `url(${plan.bg})` }}
-                            >
-                                <div className="plan-header">
-                                    <h3>{plan.name}</h3>
-                                    {plan.popular && <span className="badge-plan">Popular</span>}
-                                </div>
-                                <div className="plan-price">
-                                    <h2>{plan.price}<span>/{plan.monthly}</span></h2>
-                                </div>
-                                <p className="plan-description">{plan.description}</p>
-                                <button className="plan-button">{plan.buttonText}</button>
-
-                                <ul className="plan-features">
-                                    {plan.features.map((feature, i) => (
-                                        <li key={i} className="feature-item">
-                                            {typeof feature === "object" ? (
-                                                <>
-                                                    <img src={feature.icon} alt="icon" className="feature-icon" />
-                                                    <span>{feature.text}</span>
-                                                </>
-                                            ) : (
-                                                <span>{feature}</span>
-                                            )}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                        <div className="col-lg-4 mb-4 col-12" key={index}>
+                            <TiltCard plan={plan} />
                         </div>
                     ))}
                 </div>

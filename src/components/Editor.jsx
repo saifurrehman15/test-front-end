@@ -5,6 +5,9 @@ import globeImg from "../assets/images/LooperGroup.png";
 import bg2 from "../assets/images/bg2.png";
 import Timeline from "./time-line";
 import DesignPanel from "./design-panel";
+import img1 from "../assets/images/rectangle.png";
+import img2 from "../assets/images/type-01.png";
+import img3 from "../assets/images/image-03.png";
 
 const options = [
   { value: "screen1", label: "Screen 1" },
@@ -13,7 +16,7 @@ const options = [
 ];
 const Editor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [size, setSize] = useState({ width: "100%", height: 320 });
+  const [size, setSize] = useState({ width: "100%", height: 350 });
   const [opacity, setOpacity] = useState(1);
   const [color, setColor] = useState("#0086FF");
   const [selectedOption, setSelectedOption] = useState(null);
@@ -23,9 +26,9 @@ const Editor = () => {
   return (
     <section className="editor-section pad-y">
       <div className="container position-relative ">
-        <img src={bg2} className="img-fluid bg-img" alt="" />
+        <img src={bg2} className="img-fluid bg-img bg-img-2" alt="" />
         <div className="row">
-          <div className="col-lg-3 col-md-3 col-12">
+          <div className="col-lg-3 hide-column col-12">
             <aside className="sidebar">
               <div className="d-flex gap-3 mb-3">
                 <button
@@ -54,13 +57,29 @@ const Editor = () => {
                 }}
               />
               <ul className="item-list">
-                <li>Rectangle</li>
-                <li>User Interface</li>
-                <li>Image</li>
+                <li className="active">
+                  <span className="icon-box">
+                    <img src={img1} className="img-fluid" alt="" />
+                  </span>
+                  Rectangle
+                </li>
+                <li>
+                  <span className="icon-box">
+                    <img src={img2} className="img-fluid" alt="" />
+                  </span>
+                  User Interface
+                </li>
+                <li>
+                  
+                  <span className="icon-box">
+                    <img src={img3} className="img-fluid" alt="" />
+                  </span>
+                  Image
+                </li>
               </ul>
             </aside>
           </div>
-          <div className="col-lg-6 col-md-6 col-12">
+          <div className="col-lg-6 col-12">
             <div className="main-canvas">
               <motion.div
                 className="animated-object"
@@ -134,26 +153,8 @@ const Editor = () => {
             </div>
           </div>
           <div className="col-lg-3 col-md-3 col-12">
-            <DesignPanel/>
+            <DesignPanel />
             {/* <aside className="sidebar">
-              <div className="tabs-area-2">
-                <button
-                  className={`tab-btn-2 ${
-                    activeBtn2 == "Design" && "active-tab"
-                  }`}
-                  onClick={() => setActive2("Design")}
-                >
-                  Design
-                </button>
-                <button
-                  className={`tab-btn-2 ${
-                    activeBtn2 == "Animate" && "active-tab"
-                  }`}
-                  onClick={() => setActive2("Animate")}
-                >
-                  Animate
-                </button>
-              </div>
               <div className="align-area">
                 <div className="area-box-1">
                   <button></button>

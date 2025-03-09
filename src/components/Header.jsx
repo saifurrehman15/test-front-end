@@ -5,7 +5,7 @@ function Header() {
     <header className='header'>
     <div className="container">
       <div className="row justify-content-center">
-        <div className="col-lg-7 col-md-10 col-12">
+        <div className="col-xl-7 col-lg-8 col-md-10 col-12">
           <div className="row align-items-center header-bg">
             <div className="col-lg-3 col-md-3 col-6">
               <div className="logo-area">
@@ -13,7 +13,7 @@ function Header() {
               </div>
             </div>
             <div className='col-lg-6 col-md-6 col-12'>
-              <ul className='lists'>
+              <ul className='lists d-lg-flex d-none'>
                 <li className='list-item'>
                   <a href="#">Home</a>
                 </li>
@@ -31,6 +31,7 @@ function Header() {
             <div className='col-lg-3 col-md-3 col-6'>
               <div className='btn-area text-end'>
                 <a href="#" className='primary-btn'>Try it now</a>
+                <button className='menu-btn'><i className="fa-solid fa-menu"></i>menu</button>
               </div>
             </div>
           </div>

@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import align1 from "../assets/images/align-1.png";
+import align2 from "../assets/images/align-2.png";
+import align3 from "../assets/images/align-3.png";
+import align4 from "../assets/images/align-4.png";
+import ColorArea from "./color-box";
 
 const DesignPanel = () => {
   // State to manage the square's properties
@@ -12,6 +18,7 @@ const DesignPanel = () => {
     opacity: 100,
     color: "#0095FF",
   });
+  const [activeBtn2, setActive2] = useState("Design");
 
   // Handler to update properties
   const handleChange = (e) => {
@@ -21,12 +28,24 @@ const DesignPanel = () => {
       [name]: name === "opacity" ? Math.min(100, Math.max(0, value)) : value,
     }));
   };
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState(0);
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+  const handleColorChange = (e) => {
+    setSquareProps((prev) => ({
+      ...prev,
+      color: e.target.value,
+    }));
+  };
+console.log(squareProps);
+
   const faqData = [
+    {
+      question: "Fill",
+      answer: <ColorArea  squareProps={squareProps} handleColorChange={handleColorChange}/>,
+    },
     {
       question: "Stroke",
       answer: "Yes! Animify offers a free plan with limited features.",
@@ -41,47 +60,56 @@ const DesignPanel = () => {
       answer:
         "Billing is based on the number of team members and the selected plan.",
     },
-   
   ];
-
-  // Handler for color change
-  const handleColorChange = (e) => {
-    setSquareProps((prev) => ({
-      ...prev,
-      color: e.target.value,
-    }));
-  };
 
   return (
     <div className="design-panel-container">
       {/* Tabs */}
-      <div className="tabs">
-        <button className="tab active">Design</button>
-        <button className="tab">Animate</button>
+      <div className="tabs-area-2 mb-3">
+        <button
+          className={`tab-btn-2 ${activeBtn2 == "Design" && "active-tab"}`}
+          onClick={() => setActive2("Design")}
+        >
+          Design
+        </button>
+        <button
+          className={`tab-btn-2 ${activeBtn2 == "Animate" && "active-tab"}`}
+          onClick={() => setActive2("Animate")}
+        >
+          Animate
+        </button>
       </div>
 
       {/* Layout Section */}
+      <div className="align-area mb-3">
+        <div className="area-box-1">
+          <button>
+            <img src={align1} alt="" />
+          </button>
+          <button>
+            <img src={align2} alt="" />
+          </button>
+          <button>
+            <img src={align3} alt="" />
+          </button>
+        </div>
+        <div className="area-box-1">
+          <button>
+            <img src={align4} alt="" />
+          </button>
+          <button>
+            <img src={align2} alt="" />
+          </button>
+          <button>
+            <img src={align3} alt="" />
+          </button>
+        </div>
+      </div>
+      <div className="divider"></div>
       <div className="section">
         <h3>Layout</h3>
-        <div className="layout-controls">
-          <div className="layout-icons">
-            <button className="icon-btn">↔</button>
-            <button className="icon-btn">↕</button>
-            <button className="icon-btn">↺</button>
-          </div>
-          <div className="layout-size">
-            <span>
-              {squareProps.width} x {squareProps.height}
-            </span>
-          </div>
-          <div className="layout-align">
-            <button className="icon-btn">⇤</button>
-            <button className="icon-btn">↕</button>
-            <button className="icon-btn">⇥</button>
-          </div>
-        </div>
         <div className="row">
-          <div className="col-lg-6">
+          <div className="col-xxl-6 col-12">
             <div className="input-group">
               <div className="input-item">
                 <label>X</label>
@@ -103,7 +131,7 @@ const DesignPanel = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-6">
+          <div className="col-xxl-6 col-12">
             <div className="input-group">
               <div className="input-item">
                 <label>Width</label>
@@ -125,21 +153,20 @@ const DesignPanel = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-6">
+          <div className="col-xxl-6 col-12">
             <div className="input-group">
               <div className="input-item">
                 <label>Angle</label>
                 <input
-                  type="number"
+                  type="text"
                   name="angle"
-                  value={squareProps.angle}
+                  value={squareProps.angle + "°"}
                   onChange={handleChange}
                 />
-                <span>°</span>
               </div>
             </div>
           </div>
-          <div className="col-lg-6">
+          <div className="col-xxl-6 col-12">
             <div className="input-group">
               <div className="input-item">
                 <label>Radius</label>
@@ -154,61 +181,69 @@ const DesignPanel = () => {
           </div>
         </div>
       </div>
+      <div className="divider"></div>
 
       {/* Opacity Section */}
-      <div className="section">
-        <h3>Opacity</h3>
-        <div className="input-group">
-          <input
-            type="number"
-            name="opacity"
-            value={squareProps.opacity}
-            onChange={handleChange}
-            min="0"
-            max="100"
-          />
-          <span>%</span>
+      <div className="section row align-items-center">
+        <div className="col-lg-6">
+          <h3>Opacity</h3>
+        </div>
+        <div className="col-lg-6 d-flex justify-content-end">
+          <div className="input-group">
+            <input
+              type="number"
+              name="opacity"
+              value={squareProps.opacity}
+              onChange={handleChange}
+              min="0"
+              max="100"
+            />
+          </div>
         </div>
       </div>
+      <div className="divider"></div>
 
       {/* Fill Section */}
-      <div className="section">
-        <div className="section-header">
-          <h3>Fill</h3>
-          <button className="toggle-btn">-</button>
-        </div>
-        <div className="input-group color-group">
-          <label>Color</label>
-          <input
-            type="color"
-            name="color"
-            value={squareProps.color}
-            onChange={handleColorChange}
-          />
-          <input
-            type="text"
-            value={squareProps.color}
-            onChange={handleColorChange}
-          />
-          <span>{squareProps.opacity}%</span>
-        </div>
-      </div>
 
-      {faqData.map((faq, index) => (
-        <div
-          key={index}
-          className={`faq-item faq-item-2 ${openIndex === index ? "open" : ""}`}
-          onClick={() => toggleFAQ(index)}
-        >
-          <div className="faq-question">
-            <h3>{faq.question}</h3>
-            <span className="faq-toggle">
-              {openIndex === index ? "−" : "+"}
-            </span>
-          </div>
-          {openIndex === index && <p className="faq-answer">{faq.answer}</p>}
-        </div>
-      ))}
+      <div className="accordion-area">
+        {faqData.map((faq, index) => (
+          <motion.div
+            key={index}
+            className={`main-accordion ${
+              openIndex === 0 && index == 0 && "rotate-class"
+            } ${openIndex === index ? "open" : ""}`}
+            whileTap={{ y: 1 }}
+          >
+            <div
+              className={`faq-question faq-question-2 ${
+                openIndex !== index ? "border-radius" : ""
+              }`}
+              onClick={() => toggleFAQ(index)}
+            >
+              <h3>{faq.question}</h3>
+              <div className="divider"></div>
+              <span className="faq-toggle faq-toggle-2">
+                {openIndex === index ? "−" : "+"}
+              </span>
+            </div>
+            <AnimatePresence>
+              {openIndex === index && (
+                <div className="main-body">
+                  <motion.p
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="faq-answer"
+                  >
+                    {faq.answer}
+                  </motion.p>
+                </div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 };

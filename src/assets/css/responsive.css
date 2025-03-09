@@ -1,0 +1,176 @@
+@media (max-width: 1620px) {
+  .testimonials-section::after {
+    background-size: contain;
+    left: 50%;
+  }
+  .bg-img-2 {
+    width: 65%;
+  }
+}
+
+@media (max-width: 1366px) {
+  .design-panel-container {
+    width: 100%;
+  }
+  .container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1200px;
+}
+}
+
+@media (max-width: 1199px) {
+  .primary-hd {
+    font-size: 3rem;
+  }
+  .align-area {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  .area-box-1 {
+    width: 100%;
+  }
+  .area-box-1 button {
+    width: calc(100% / 3);
+  }
+  .images {
+    height: 80px;
+    width: 180px;
+  }
+  .item-list {
+    padding: 20px 10px;
+  }
+  .main-canvas {
+    height: 635px;
+  }
+  .bg-img-2 {
+    top: 55% !important;
+  }
+  .item-list li {
+    padding: 4px 5px;
+  }
+  
+}
+
+@media (max-width: 991px) {
+  .hide-column {
+    position: fixed;
+    left: -20px;
+    width: 300px !important;
+  }
+  .bg-img-2 {
+    display: none;
+  }
+  .features-card {
+    padding: 20px 10px 0;
+  }
+  .img-group-1,
+  .img-group {
+    height: 150px;
+    width: 40%;
+  }
+  .img-group {
+    height: 170px !important;
+  }
+  .header::after {
+    display: none;
+  }
+  .testimonials-header::after {
+    width: 250px;
+  }
+  .why-choose-header h2 {
+    font-size: 2.5rem;
+  }
+  .testimonials-section::after {
+    top: 115px;
+  }
+  .para {
+    font-size: 1rem;
+  }
+  .menu-btn{
+    display: block !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .primary-hd {
+    font-size: 2.5rem;
+  }
+
+  .features-card {
+    padding: 20px 15px;
+  }
+  .testimonial-card {
+    padding: 25px;
+}
+}
+
+@media (max-width: 575px) {
+  .primary-hd {
+    font-size: 2rem;
+    margin: 15px 0;
+  }
+
+  .why-choose-section {
+    margin: 0 10px;
+  }
+  .testimonials-section::after {
+    width: 100%;
+  }
+  .bg-img {
+    display: none;
+  }
+  .main-canvas {
+    height: 630px;
+}
+}
+
+
+@media (max-width:480px) {
+    .primary-hd {
+        font-size: 1.8rem;
+    }
+    .para,.primary-btn {
+        font-size: 0.8rem;
+    }
+
+    .primary-btn{
+        display: flex;
+        align-items: center;
+    }
+    .why-choose-header h2 {
+        font-size: 2.2rem;
+    }
+    .group-img-area {
+        height: 220px;
+    }
+    .plan-button {
+        padding: 8px 20px;
+    }
+    .testimonials-section::after {
+        width: 85%;
+    }
+    .animated-object{
+        height: 280px !important;
+    }
+    .dots-sec {
+        gap: 6px;
+    }
+    .main-canvas {
+        height: 560px;
+    }
+}
+
+@media (max-width:440px) {
+    .img-group {
+        height: 185px !important;
+    }
+    .img-group-1, .img-group {
+        width: 50%;
+    }
+    .animated-object{
+        height: 260px !important;
+    }
+    .main-canvas {
+        height: 540px;
+    }
+}

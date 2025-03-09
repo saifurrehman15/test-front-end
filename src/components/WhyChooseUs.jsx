@@ -23,7 +23,7 @@ const WhyChooseUs = () => {
                 <div className="gradient-border"></div>
                 <div className="row features-grid">
                     {features.map((feature, index) => (
-                        <div key={index} className="col-lg-4 col-md-4 col-12 feature-box">
+                        <div key={index} className="col-lg-4 col-md-6 col-12 feature-box">
                             <div className="icon">{feature.icon}</div>
                             <h3>{feature.title}</h3>
                             <p>{feature.desc}</p>
