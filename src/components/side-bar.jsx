@@ -4,7 +4,7 @@ import { X } from "lucide-react";
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const sidebarVariants = {
     open: {
-      height: "100vh",
+      height: "90vh",
       opacity: 1,
       transition: { type: "spring", stiffness: 80, damping: 15 },
     },
@@ -45,7 +45,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             <a href="#">About</a>
           </li>
           <li>
-            <a href="" className="primary-btn">
+            <a href="" className="primary-btn try-btn-2">
               Try it now
             </a>
           </li>

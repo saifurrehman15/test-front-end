@@ -1613,7 +1613,7 @@ a {
   padding: 15px;
   color: #ffffff; /* White text for contrast */
   z-index: 1000;
-  overflow: hidden;
+  overflow: scroll;
   margin: 10px 0;
 }
 

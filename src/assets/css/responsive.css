@@ -228,6 +228,9 @@
   .main-canvas {
     height: 560px;
   }
+  .try-btn-2{
+    width: fit-content !important;
+  }
 }
 
 @media (max-width: 440px) {
