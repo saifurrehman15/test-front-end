@@ -4,8 +4,10 @@ import Sidebar from "./side-bar";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
+
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const links = ["Home", "Template", "Pricing", "About"];
   return (
     <header className="header">
       <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -20,23 +22,28 @@ function Header() {
               </div>
               <div className="col-lg-6 col-md-6 col-12 d-lg-block d-none">
                 <ul className="lists">
-                  <li className="list-item">
-                    <a href="#">Home</a>
-                  </li>
-                  <li className="list-item">
-                    <a href="#">Template</a>
-                  </li>
-                  <li className="list-item">
-                    <a href="#">Pricing</a>
-                  </li>
-                  <li className="list-item">
-                    <a href="#">About</a>
-                  </li>
+                  {links.map((item, index) => (
+                    <li className="list-item" key={index}>
+                      <motion.a
+                        href="#"
+                        whileHover={{ scale: 1.1 }}
+                        className={`nav-link`}
+                      >
+                        {item}
+                        <motion.div
+                          className="underline"
+                          initial={{ width: 0 }}
+                          whileHover={{ width: "100%" }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      </motion.a>
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div className="col-lg-3 col-md-6 col-6 col-end">
                 <div className="btn-area text-end">
-                  <a href="#" className="primary-btn try-btn">
+                  <a href="" className="primary-btn try-btn">
                     Try it now
                   </a>
                   <motion.button

@@ -176,7 +176,8 @@ const SideBar2 = () => {
       />
       <hr
         style={{
-          backgroundColor: "#fff",
+          backgroundColor: "#c1c1c1",
+          color:"#000",
           height: "2px",
         }}
       />

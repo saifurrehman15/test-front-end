@@ -1,4 +1,4 @@
-const ColorArea = ({ squareProps, handleColorChange }) => {
+const ColorArea = ({ squareProps, handleColorChange,handleChange }) => {
   return (
     <div className="row align-items-center">
       <div className="col-xxl-3 col-12">
@@ -19,8 +19,9 @@ const ColorArea = ({ squareProps, handleColorChange }) => {
           />
           <input
             type="text"
-            value={"100%"}
-            // onChange={handleColorChange}
+            name="opacity2"
+            value={squareProps.opacity2}
+            onChange={handleChange}
           />
         </div>
       </div>

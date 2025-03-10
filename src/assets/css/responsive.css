@@ -11,6 +11,10 @@
   .card-desc {
     font-size: 14px;
   }
+  .header::after {
+    width: 80%;
+  }
+  
 }
 @media (max-width: 1366px) {
   .design-panel-container {
@@ -33,6 +37,9 @@
   .para {
     font-size: 1rem;
   }
+  .input-group label {
+    font-size: 12px;
+}
 }
 
 @media (max-width: 1199px) {
@@ -73,6 +80,9 @@
   .try-btn {
     display: none !important;
   }
+  .hero-banner {
+    padding: 3rem 0;
+}
   .sidebar {
     height: auto !important;
     border-bottom-left-radius: 0 !important;
