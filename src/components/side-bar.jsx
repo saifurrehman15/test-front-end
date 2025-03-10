@@ -44,6 +44,11 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           <li>
             <a href="#">About</a>
           </li>
+          <li>
+            <a href="" className="primary-btn">
+              Try it now
+            </a>
+          </li>
         </ul>
       </motion.aside>
 
