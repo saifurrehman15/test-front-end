@@ -199,7 +199,8 @@ a {
   gap: 10px;
 }
 
-.sidebar,.design-panel-container {
+.sidebar,
+.design-panel-container {
   width: 100%;
   height: 100%;
   background: linear-gradient(
@@ -217,7 +218,8 @@ a {
 }
 
 /* Glowing border effect */
-.sidebar::before,.design-panel-container::before {
+.sidebar::before,
+.design-panel-container::before {
   content: "";
   position: absolute;
   top: -2px;
@@ -236,7 +238,8 @@ a {
   );
 }
 
-.sidebar::after,.design-panel-container::after {
+.sidebar::after,
+.design-panel-container::after {
   content: "";
   position: absolute;
   top: 0;
@@ -768,6 +771,28 @@ a {
   border-radius: 30px;
   margin: auto;
   margin-top: -50px !important;
+  transition: all 0.3s ease-out;
+}
+.collab-btn:hover {
+  transform: scale(1.1);
+  animation: animate 1s;
+}
+@keyframes animate {
+  0% {
+    transform: rotate(5deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
 }
 .half-blur::before {
   content: "";
@@ -1307,10 +1332,9 @@ a {
   overflow: hidden;
 }
 
-.nav-link:hover{
+.nav-link:hover {
   color: #0059ff !important;
 }
-
 
 .tabs {
   display: flex;
@@ -1337,25 +1361,25 @@ a {
   font-size: 14px;
   border-radius: 5px 0 0 5px;
 }
-.angle-inp-group{
+.angle-inp-group {
   display: flex;
   align-items: center;
 }
-.angle-inp-group input{
+.angle-inp-group input {
   width: 80% !important;
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
 }
-.angle-box-area{
-    padding: 5px;
-    width: 20%;
-    border: none;
-    background-color: #191919;
-    color: #fff;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    font-size: 14px;
-    margin: 0 !important;
+.angle-box-area {
+  padding: 5px;
+  width: 20%;
+  border: none;
+  background-color: #191919;
+  color: #fff;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-size: 14px;
+  margin: 0 !important;
 }
 
 .tab:last-child {
